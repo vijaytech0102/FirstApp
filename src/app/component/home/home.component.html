@@ -1,0 +1,18 @@
+<h1>Welcome to home page</h1>
+<h2>{{ message }}</h2>
+<p>home works!</p>
+<form action="">
+    <input type="text" name="firstName" id="" [(ngModel)]="firstName" placeholder="First Name">
+    <input type="text" name="lastName" id="" [(ngModel)]="lastName" placeholder="Last Name">
+</form>
+
+<div>
+    <h3><a href="">{{ firstName }} {{ lastName }}</a></h3>
+</div>
+<div>
+    NgModel is a directive that binds the value of an HTML control (input, select, textarea) to a property in the component. It allows for two-way data binding, meaning that any changes made to the input field will automatically update the corresponding property in the component, and vice versa. This makes it easier to manage form inputs and keep the UI in sync with the underlying data model.
+</div>
+<div>
+    property binding is a one-way data binding technique that allows you to bind the value of an HTML element's property to a property in the component. It is denoted by square brackets [] and is used to set the value of an element's property based on the value of a component property. For example, you can use property binding to set the disabled state of a button based on a boolean property in the component.
+    <button [disabled]="isDisabled">Click Me</button>
+</div>
