@@ -1,0 +1,10 @@
+<!-- <p>login works!</p> -->
+<!-- Event Binding -->
+<h1>Welcome to login page</h1>
+<input type="text" name="username" id="" (input)="onUsernameInput($event)" placeholder="Username">
+<input type="password" name="password" id="" (input)="onPasswordInput($event)" placeholder="Password">
+<div>
+    <p>UserName:{{username}}</p>
+    <p>Password:{{password}}</p>
+</div>
+<button (click)="onLogin($event)">Login</button>

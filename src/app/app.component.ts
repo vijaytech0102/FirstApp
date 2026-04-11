@@ -3,15 +3,17 @@ import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from "./component/home/home.component";
+import { LoginComponent } from "./component/login/login.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, FormsModule, CommonModule, HomeComponent],
+  imports: [RouterOutlet, FormsModule, CommonModule, HomeComponent, LoginComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+ 
   // ===== 1. BASIC PROPERTIES (used for Interpolation) =====
   title = 'Welcome to Angular Basics Guide - First App';
   appVersion = '15.0';
