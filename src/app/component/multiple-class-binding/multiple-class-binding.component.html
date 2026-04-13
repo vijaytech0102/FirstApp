@@ -1,0 +1,173 @@
+<div class="container">
+  <h2>Multiple Class Binding using ngClass</h2>
+  
+  <div class="content">
+    <h3>🎨 Methods to Apply Multiple Classes</h3>
+    
+    <!-- Method 1: Multiple [class] bindings -->
+    <div class="demo-section">
+      <h4>Method 1️⃣ : Multiple [class.name] Bindings</h4>
+      <div 
+        [class.highlight]="isHighlight"
+        [class.bold]="isBold"
+        [class.primary]="isPrimary"
+        class="demo-box"
+      >
+        <p>Box with multiple conditional classes</p>
+      </div>
+      <button (click)="toggleClasses()" class="btn-toggle">Toggle Classes</button>
+      <p class="status">
+        Highlight: {{ isHighlight ? '✅' : '❌' }} | 
+        Bold: {{ isBold ? '✅' : '❌' }} | 
+        Primary: {{ isPrimary ? '✅' : '❌' }}
+      </p>
+    </div>
+    
+    <hr>
+    
+    <!-- Method 2: Object syntax with ngClass -->
+    <div class="demo-section">
+      <h4>Method 2️⃣ : [ngClass] with Object Syntax</h4>
+      <div 
+        [ngClass]="classes"
+        class="demo-box"
+      >
+        <p>Box with object-based classes</p>
+      </div>
+      <div class="class-toggles">
+        <button *ngFor="let key of ['highlight', 'bold', 'primary']" 
+                (click)="toggleClassInObject(key)"
+                [class.active]="classes[key]">
+          {{ key }}
+        </button>
+      </div>
+      <p class="status">
+        <strong>Classes Applied:</strong>
+        <span *ngFor="let key of getObjectKeys(classes)">
+          <span *ngIf="classes[key]" class="class-badge">
+            {{ key }}
+          </span>
+        </span>
+      </p>
+    </div>
+    
+    <hr>
+    
+    <!-- Method 3: Array syntax with ngClass -->
+    <div class="demo-section">
+      <h4>Method 3️⃣ : [ngClass] with Array Syntax</h4>
+      <div 
+        [ngClass]="getCombinedClasses()"
+      >
+        <p>Box with array-based classes</p>
+      </div>
+      <div class="array-controls">
+        <button (click)="addClassToArray('highlight')" 
+                [disabled]="dynamicClasses.includes('highlight')">
+          Add Highlight
+        </button>
+        <button (click)="addClassToArray('bold')"
+                [disabled]="dynamicClasses.includes('bold')">
+          Add Bold
+        </button>
+        <button (click)="addClassToArray('primary')"
+                [disabled]="dynamicClasses.includes('primary')">
+          Add Primary
+        </button>
+      </div>
+      <div class="array-controls">
+        <button (click)="removeClassFromArray('highlight')" 
+                [disabled]="!dynamicClasses.includes('highlight')">
+          Remove Highlight
+        </button>
+        <button (click)="removeClassFromArray('bold')"
+                [disabled]="!dynamicClasses.includes('bold')">
+          Remove Bold
+        </button>
+        <button (click)="removeClassFromArray('primary')"
+                [disabled]="!dynamicClasses.includes('primary')">
+          Remove Primary
+        </button>
+      </div>
+      <p class="status">
+        <strong>Array Classes:</strong> {{ dynamicClasses.length > 0 ? dynamicClasses.join(', ') : '(none)' }}
+      </p>
+    </div>
+    
+    <button (click)="resetStyles()" class="btn-reset">Reset All</button>
+    
+    <hr>
+    
+    <h3>❓ Different Ways to Use ngClass</h3>
+    
+    <div class="comparison-box">
+      <h4>1. Object Syntax (Most Common)</h4>
+      <div class="code-box">
+        [ngClass]="{{ '{' }} active: isActive, disabled: isDisabled {{ '}' }}"
+        <br><br>
+        Key-value pairs where:
+        <br>
+        • Key = CSS class name
+        <br>
+        • Value = boolean condition
+      </div>
+      
+      <h4>2. Array Syntax</h4>
+      <div class="code-box">
+        [ngClass]="{{ '[' }}'class1', 'class2'{{ ']' }}"
+        <br><br>
+        Array of class names to always apply
+        <br>
+        [ngClass]="{{ '[' }}'class1', condition ? 'class2' : 'class3'{{ ']' }}"
+        <br><br>
+        Can use ternary operators inside
+      </div>
+      
+      <h4>3. String Syntax</h4>
+      <div class="code-box">
+        [ngClass]="dynamicClassName"
+        <br><br>
+        Single class name from a variable
+      </div>
+      
+      <h4>4. Combination - Object + Array</h4>
+      <div class="code-box">
+        [ngClass]="{{ '{' }} active: isActive, ...otherClasses {{ '}' }}"
+        <br><br>
+        Merge multiple sources in object syntax
+      </div>
+      
+      <table class="ngclass-table">
+        <thead>
+          <tr>
+            <th>Syntax</th>
+            <th>Use Case</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Object</strong></td>
+            <td>Multiple conditional classes</td>
+            <td>[ngClass]="{{ '{' }} active: isActive, error: hasError {{ '}' }}"</td>
+          </tr>
+          <tr>
+            <td><strong>Array</strong></td>
+            <td>Mix of static and dynamic classes</td>
+            <td>[ngClass]="{{ '[' }}'base', 'theme'{{ ']' }}"</td>
+          </tr>
+          <tr>
+            <td><strong>String</strong></td>
+            <td>Single dynamic class</td>
+            <td>[ngClass]="dynamicClass"</td>
+          </tr>
+          <tr>
+            <td><strong>[class.name]</strong></td>
+            <td>Single class binding</td>
+            <td>[class.active]="isActive"</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

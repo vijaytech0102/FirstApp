@@ -1,0 +1,26 @@
+<div class="container">
+  <h2>{{ getHeading() }}</h2>
+  
+  <div class="content">
+    <h3>Basic Interpolation</h3>
+    <p><strong>Name:</strong> {{ name }}</p>
+    <p><strong>Age:</strong> {{ age }}</p>
+    <p><strong>User Info:</strong> {{ getUserInfo() }}</p>
+    
+    <hr>
+    
+    <h3>What happens if variable is undefined?</h3>
+    <p><strong>Undefined Name:</strong> {{ undefinedName }}</p>
+    <p class="note">✓ Angular displays nothing (empty string) if a variable is undefined or null</p>
+    
+    <hr>
+    
+    <h3>Key Points:</h3>
+    <ul>
+      <li>Interpolation uses double curly braces syntax</li>
+      <li>Variables must be defined in component class (.ts)</li>
+      <li>Methods can also be called in expressions</li>
+      <li>If undefined or null, Angular renders empty string</li>
+    </ul>
+  </div>
+</div>

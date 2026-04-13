@@ -1,0 +1,77 @@
+<div class="container">
+  <h2>Disable Button Dynamically</h2>
+  
+  <div class="content">
+    <h3>🔘 Dynamic Button State Control</h3>
+    
+    <div class="button-demo">
+      <button 
+        [disabled]="isDisabled" 
+        (click)="submitForm()"
+        class="btn-submit"
+      >
+        Submit Form
+      </button>
+      <button 
+        (click)="toggleDisabled()" 
+        class="btn-toggle"
+      >
+        {{ isDisabled ? 'Enable Button' : 'Disable Button' }}
+      </button>
+      <button (click)="reset()" class="btn-reset">Reset</button>
+    </div>
+    
+    <div class="info-box">
+      <p><strong>Button Status:</strong> {{ isDisabled ? '🔴 DISABLED' : '🟢 ENABLED' }}</p>
+      <p><strong>Click Count:</strong> {{ clickCount }}</p>
+      <p *ngIf="isDisabled" class="disabled-notice">
+        ⚠️ {{ disabledReason }}
+      </p>
+    </div>
+    
+    <hr>
+    
+    <h3>❓ Why is [disabled] Preferred Over disabled="{{ '{{value}}' }}"?</h3>
+    
+    <div class="comparison">
+      <h4>❌ Not Recommended: disabled="{{ '{{value}}' }}"</h4>
+      <div class="code-example">
+        &lt;button disabled="{{ '{{isDisabled}}'  }}"&gt;Click me&lt;/button&gt;
+      </div>
+      <ul>
+        <li>⚠️ Produces HTML like: disabled="false" (still disabled!)</li>
+        <li>❌ Any string in disabled attribute disables the button</li>
+        <li>🐛 Doesn't work as expected</li>
+      </ul>
+      
+      <hr>
+      
+      <h4>✅ Recommended: [disabled]="value"</h4>
+      <div class="code-example">
+        &lt;button [disabled]="isDisabled"&gt;Click me&lt;/button&gt;
+      </div>
+      <ul>
+        <li>✓ Uses boolean property binding</li>
+        <li>✓ Correctly disables when value is true</li>
+        <li>✓ Correctly enables when value is false</li>
+        <li>⚡ Better performance</li>
+      </ul>
+      
+      <hr>
+      
+      <h3>Key Takeaway</h3>
+      <div class="key-box">
+        <p>For boolean attributes like <code>disabled</code>, <code>checked</code>, <code>selected</code>, etc., always use <strong>property binding [ ]</strong> instead of interpolation.</p>
+        <p class="code-example">
+          ✅ [disabled]="isDisabled"
+          <br>
+          ✅ [checked]="isChecked"
+          <br>
+          ❌ disabled="{{ '{{isDisabled}}' }}"
+          <br>
+          ❌ checked="{{ '{{isChecked}}' }}"
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

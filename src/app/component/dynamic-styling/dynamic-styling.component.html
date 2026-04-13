@@ -1,0 +1,126 @@
+<div class="container">
+  <h2>Dynamic Styling with Property Binding</h2>
+  
+  <div class="content">
+    <h3>🎨 Dynamic Styling Example</h3>
+    
+    <div 
+      [style.backgroundColor]="bgColor"
+      [style.color]="textColor"
+      [style.fontSize.px]="fontSize"
+      [style.borderRadius]="borderRadius"
+      class="styled-box"
+    >
+      <p>This box has dynamic styling!</p>
+      <p>Font Size: {{ fontSize }}px</p>
+      <p>Background: {{ bgColor }}</p>
+    </div>
+    
+    <hr>
+    
+    <h3>🎯 Styling Controls</h3>
+    
+    <div class="controls">
+      <div class="control-group">
+        <h4>Background Colors</h4>
+        <div class="color-buttons">
+          <button 
+            *ngFor="let color of colors" 
+            (click)="changeBgColor(color.value)"
+            [style.backgroundColor]="color.value"
+            class="color-btn"
+            [title]="color.name"
+          >
+            {{ color.name }}
+          </button>
+        </div>
+      </div>
+      
+      <div class="control-group">
+        <h4>Font Size Control</h4>
+        <div class="font-controls">
+          <button (click)="decreaseFontSize()" class="btn-decrease">
+            📉 Decrease
+          </button>
+          <span class="font-size-display">{{ fontSize }}px</span>
+          <button (click)="increaseFontSize()" class="btn-increase">
+            📈 Increase
+          </button>
+        </div>
+      </div>
+      
+      <button (click)="resetStyles()" class="btn-reset">Reset All Styles</button>
+    </div>
+    
+    <hr>
+    
+    <h3>❓ Difference Between [style.background] vs [ngStyle]</h3>
+    
+    <div class="comparison-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Aspect</th>
+            <th>[style.property]</th>
+            <th>[ngStyle]</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Syntax</td>
+            <td>[style.backgroundColor]="color"</td>
+            <td>[ngStyle]="{{ '{' }} 'background-color': color {{ '}' }}"</td>
+          </tr>
+          <tr>
+            <td>Single Style</td>
+            <td>✅ Simple & Clean</td>
+            <td>⚠️ Verbose</td>
+          </tr>
+          <tr>
+            <td>Multiple Styles</td>
+            <td>⚠️ Multiple bindings</td>
+            <td>✅ Single binding</td>
+          </tr>
+          <tr>
+            <td>Readability</td>
+            <td>✅ Clear for one/two styles</td>
+            <td>✅ Clear for many styles</td>
+          </tr>
+          <tr>
+            <td>Performance</td>
+            <td>✅ Slightly better</td>
+            <td>Comparable</td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <div class="code-examples">
+        <h4>Single Style Example</h4>
+        <div class="code-box">
+          <strong>[style.backgroundColor]:</strong>
+          <br>
+          &lt;div [style.backgroundColor]="bgColor"&gt;&lt;/div&gt;
+          <br><br>
+          <strong>[ngStyle]:</strong>
+          <br>
+          &lt;div [ngStyle]="{{ '{' }} 'background-color': bgColor {{ '}' }}"&gt;&lt;/div&gt;
+        </div>
+        
+        <h4>Multiple Styles Example</h4>
+        <div class="code-box">
+          <strong>Multiple [style]:</strong>
+          <br>
+          &lt;div [style.backgroundColor]="bgColor"
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[style.color]="textColor"
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[style.fontSize.px]="fontSize"&gt;&lt;/div&gt;
+          <br><br>
+          <strong>[ngStyle] (Cleaner):</strong>
+          <br>
+          &lt;div [ngStyle]="{{ '{' }} 'background-color': bgColor, 'color': textColor, 'font-size': fontSize + 'px' {{ '}' }}"&gt;&lt;/div&gt;
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

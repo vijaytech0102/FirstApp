@@ -1,0 +1,77 @@
+<div class="container">
+  <h2>Basic Property Binding</h2>
+  
+  <div class="content">
+    <h3>🖼️ Image Property Binding</h3>
+    
+    <div class="image-section">
+      <img 
+        [src]="imageUrl" 
+        [alt]="alternateText"
+        [title]="imageTitle"
+        class="dynamic-image"
+      >
+      <p><strong>Alt Text:</strong> {{ alternateText }}</p>
+      <p><strong>Title:</strong> {{ imageTitle }}</p>
+    </div>
+    
+    <div class="button-group">
+      <button (click)="changeImage()" class="btn-change">Change Image</button>
+      <button (click)="resetImage()" class="btn-reset">Reset Image</button>
+    </div>
+    
+    <hr>
+    
+    <h3>❓ Difference Between property binding and interpolation</h3>
+    
+    <div class="comparison-box">
+      <h4>1️⃣ Interpolation: src="{{ '{{imgUrl}}' }}"</h4>
+      <div class="code-box">
+        &lt;img src="{{ '{{imageUrl}}' }}"&gt;
+      </div>
+      <p>⚠️ <strong>Drawback:</strong> URL is first set to empty/undefined, then updated when binding resolves</p>
+      <p>📊 <strong>Performance:</strong> Slower (browser tries to load the "undefined" URL first)</p>
+      <p>🔴 <strong>Timing:</strong> May cause 404 errors</p>
+      
+      <hr class="section-hr">
+      
+      <h4>2️⃣ Property Binding: [src]="imgUrl"</h4>
+      <div class="code-box">
+        &lt;img [src]="imageUrl"&gt;
+      </div>
+      <p>✅ <strong>Advantage:</strong> Property is bound directly, set once with correct value</p>
+      <p>⚡ <strong>Performance:</strong> Faster (correct URL set immediately)</p>
+      <p>🟢 <strong>Timing:</strong> No 404 errors</p>
+      
+      <hr class="section-hr">
+      
+      <table>
+        <tr>
+          <th>Aspect</th>
+          <th>Interpolation: src="{{ '{{url}}' }}"</th>
+          <th>Property Binding: [src]="url"</th>
+        </tr>
+        <tr>
+          <td>Syntax</td>
+          <td>src="{{ '{{url}}' }}"</td>
+          <td>[src]="url"</td>
+        </tr>
+        <tr>
+          <td>Works with attributes?</td>
+          <td>✅ Works with all attributes</td>
+          <td>✅ Works with properties and attributes</td>
+        </tr>
+        <tr>
+          <td>Performance</td>
+          <td>⚠️ Slower</td>
+          <td>✅ Faster</td>
+        </tr>
+        <tr>
+          <td>Recommended for images</td>
+          <td>❌ Not recommended</td>
+          <td>✅ Recommended</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

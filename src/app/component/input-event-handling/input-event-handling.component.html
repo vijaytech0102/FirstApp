@@ -1,0 +1,128 @@
+<div class="container">
+  <h2>Input Event Handling</h2>
+  
+  <div class="content">
+    <h3>⌨️ Input Event Capture Example</h3>
+    
+    <div class="input-section">
+      <input 
+        type="text"
+        [(ngModel)]="userInput"
+        (input)="onInput($event)"
+        (change)="onChange($event)"
+        (keyup)="onKeyup($event)"
+        (keydown)="onKeydown($event)"
+        placeholder="Type something here..."
+        class="main-input"
+      >
+      <button (click)="clearInput()" class="btn-clear">Clear</button>
+    </div>
+    
+    <div class="display-area">
+      <h4>Current Input:</h4>
+      <p class="current-value">{{ userInput || '(empty)' }}</p>
+      <p class="char-count">Character count: {{ userInput.length }}</p>
+    </div>
+    
+    <hr>
+    
+    <h3>📊 Event Log (Last 10 Events)</h3>
+    
+    <div class="event-log">
+      <div *ngIf="eventLog.length === 0" class="no-events">
+        No events yet. Start typing in the input field! ⌨️
+      </div>
+      <table *ngIf="eventLog.length > 0" class="log-table">
+        <thead>
+          <tr>
+            <th>Event Type</th>
+            <th>Value</th>
+            <th>Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let entry of eventLog" [ngClass]="'event-' + entry.event.toLowerCase()">
+            <td>{{ entry.event }}</td>
+            <td>{{ entry.value }}</td>
+            <td>{{ entry.timestamp }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <button (click)="clearLog()" class="btn-clear-log" *ngIf="eventLog.length > 0">
+      Clear Log
+    </button>
+    
+    <hr>
+    
+    <h3>❓ Difference Between (change) and (input) Events</h3>
+    
+    <div class="comparison">
+      <table class="diff-table">
+        <thead>
+          <tr>
+            <th>Aspect</th>
+            <th>(input) Event</th>
+            <th>(change) Event</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>When Fired</strong></td>
+            <td>✨ Every keystroke/character change</td>
+            <td>🎯 Only when input loses focus (blur)</td>
+          </tr>
+          <tr>
+            <td><strong>Frequency</strong></td>
+            <td>🔄 Very frequent (per character)</td>
+            <td>⚡ Single time (on blur)</td>
+          </tr>
+          <tr>
+            <td><strong>Real-time Update</strong></td>
+            <td>✅ Yes - live as you type</td>
+            <td>❌ No - waits for blur</td>
+          </tr>
+          <tr>
+            <td><strong>Use Cases</strong></td>
+            <td>Live search, auto-suggest, counters</td>
+            <td>Form validation, price calculation</td>
+          </tr>
+          <tr>
+            <td><strong>Performance</strong></td>
+            <td>⚠️ More handlers called</td>
+            <td>✅ Single handler call</td>
+          </tr>
+          <tr>
+            <td><strong>Example</strong></td>
+            <td>(input)="updateData($event)"</td>
+            <td>(change)="validateData($event)"</td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <div class="example-box">
+        <h4>📝 Example Scenario</h4>
+        <p><strong>Input Event Demonstration:</strong></p>
+        <div class="code-example">
+          &lt;input (input)="onInput($event)"&gt;
+          <br>
+          // Fired for each character: 'a', 'ab', 'abc', ...
+        </div>
+        
+        <p><strong>Change Event Demonstration:</strong></p>
+        <div class="code-example">
+          &lt;input (change)="onChange($event)"&gt;
+          <br>
+          // Fired only when user leaves the field
+        </div>
+      </div>
+    </div>
+    
+    <hr>
+    
+    <div class="tip-box">
+      <strong>💡 Tip:</strong> Try typing in the input field above, then leave it to see the difference between (input) and (change) events in the log!
+    </div>
+  </div>
+</div>

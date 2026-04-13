@@ -1,0 +1,53 @@
+<div class="container">
+  <h2>Expression in Interpolation</h2>
+  
+  <div class="content">
+    <h3>📊 Arithmetic Operations</h3>
+    <div class="calculation">
+      <p>{{ num1 }} + {{ num2 }} = <strong>{{ getSum() }}</strong></p>
+      <p>{{ num1 }} × {{ num2 }} = <strong>{{ getProduct() }}</strong></p>
+      <p>{{ num2 }} - {{ num1 }} = <strong>{{ getDifference() }}</strong></p>
+      <p>{{ num1 }} ÷ {{ num2 }} = <strong>{{ (num1 / num2).toFixed(2) }}</strong></p>
+    </div>
+    
+    <hr>
+    
+    <h3>📝 String Manipulation</h3>
+    <div class="string-ops">
+      <p><strong>Original:</strong> {{ text }}</p>
+      <p><strong>Uppercase:</strong> {{ text.toUpperCase() }}</p>
+      <p><strong>Lowercase:</strong> {{ text.toLowerCase() }}</p>
+      <p><strong>Length:</strong> {{ text.length }} characters</p>
+      <p><strong>First 7 chars:</strong> {{ text.substring(0, 7) }}</p>
+    </div>
+    
+    <hr>
+    
+    <h3>📋 Array Operations</h3>
+    <div class="array-ops">
+      <p><strong>Array:</strong> {{ numbers }}</p>
+      <p><strong>Sum of array:</strong> {{ getArraySum() }}</p>
+      <p><strong>Array length:</strong> {{ numbers.length }}</p>
+      <p><strong>First element:</strong> {{ numbers[0] }}</p>
+    </div>
+    
+    <hr>
+    
+    <h3>❓ Can We Use Complex Logic (Loops/Conditions)?</h3>
+    <div class="note">
+      <p>❌ <strong>No, we cannot use:</strong></p>
+      <ul>
+        <li>Loops (for, while, etc.)</li>
+        <li>If-else statements directly</li>
+        <li>Assignment operators (=, +=, etc.)</li>
+      </ul>
+      <p>✅ <strong>We can use:</strong></p>
+      <ul>
+        <li>Method calls that contain logic</li>
+        <li>Ternary operator: (condition ? true : false)</li>
+        <li>Optional chaining operator: variable?.property</li>
+        <li>Simple arithmetic and string operations</li>
+      </ul>
+    </div>
+  </div>
+</div>

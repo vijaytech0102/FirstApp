@@ -1,304 +1,55 @@
-<app-login></app-login>
-<app-home></app-home>
-<!-- ============================================
-     ANGULAR BASICS - COMPREHENSIVE GUIDE
-     ============================================ -->
-
-<div class="t-container">
-  <header class="header">
-    <h1>{{ title }}</h1>
-    <p class="subtitle">Angular Version: {{ appVersion }}</p>
-  </header>
-
-  <main class="main-content">
-    
-    <!-- ===== 1. INTERPOLATION ===== -->
-    <section class="example-section">
-      <h2>1. Interpolation Syntax</h2>
-      <p class="description">Displays component property values in the template using interpolation syntax</p>
-      
-      <div class="code-example">
-        <p><strong>Component:</strong> <code>title = 'Angular Basics Guide';</code></p>
-        <p><strong>Template:</strong> <code>&lt;h1&gt;{{ title }}&lt;/h1&gt;</code></p>
-        <p><strong>Output:</strong></p>
-        <div class="output-box">
-          Current Title: <strong>{{ title }}</strong>
-        </div>
+<!-- Navigation to All Components -->
+<nav class="navbar">
+  <div class="nav-container">
+    <h2 class="nav-title">📚 Angular Data Binding Guide</h2>
+    <div class="nav-menu">
+      <!-- Interpolation Section -->
+      <div class="nav-section">
+        <span class="nav-section-title">Interpolation</span>
+        <a routerLink="/interpolation-basics" class="nav-link">1. Interpolation Basics</a>
+        <a routerLink="/expression-interpolation" class="nav-link">2. Expression Interpolation</a>
       </div>
-    </section>
-
-    <!-- ===== 2. TWO-WAY BINDING ===== -->
-    <section class="example-section">
-      <h2>2. Two-Way Binding - [(ngModel)]</h2>
-      <p class="description">Synchronizes data between component and template (both directions)</p>
       
-      <div class="code-example">
-        <p><strong>Syntax:</strong> <code>[(ngModel)]="propertyName"</code></p>
-        
-        <div class="form-group">
-          <label>Enter Your Name:</label>
-          <input 
-            type="text" 
-            [(ngModel)]="userName" 
-            placeholder="Type your name..."
-          />
-        </div>
-
-        <div class="form-group">
-          <label>Enter Your Email:</label>
-          <input 
-            type="email" 
-            [(ngModel)]="userEmail" 
-            placeholder="Type your email..."
-          />
-        </div>
-
-        <div class="output-box">
-          <p><strong>User Name:</strong> {{ userName || 'Not entered yet' }}</p>
-          <p><strong>User Email:</strong> {{ userEmail || 'Not entered yet' }}</p>
-          <p><strong>Greeting:</strong> {{ greeting }}</p>
-        </div>
+      <!-- Two-Way Binding Section -->
+      <div class="nav-section">
+        <span class="nav-section-title">Two-Way Binding</span>
+        <a routerLink="/two-way-binding" class="nav-link">3. Two-Way Binding</a>
+        <a routerLink="/form-input-binding" class="nav-link">4. Form Input Binding</a>
+        <a routerLink="/interpolation-ngmodel" class="nav-link">5. Interpolation + ngModel</a>
       </div>
-    </section>
-
-    <!-- ===== 3. PROPERTY BINDING ===== -->
-    <section class="example-section">
-      <h2>3. Property Binding - [property]</h2>
-      <p class="description">Binds component properties to DOM element properties</p>
       
-      <div class="code-example">
-        <p><strong>Syntax:</strong> <code>[property]="expression"</code></p>
-
-        <div class="binding-demo">
-          <img 
-            [src]="imageUrl" 
-            [alt]="'Link not found: ' + imageUrl" 
-            width="150"
-          />
-          
-          <div class="control-group">
-            <button (click)="toggleDisabled()">
-              Toggle Button Disabled: {{ isDisabled ? 'Yes' : 'No' }}
-            </button>
-            <button 
-              [disabled]="isDisabled"
-              class="test-button"
-            >
-              This button is {{ isDisabled ? 'DISABLED' : 'ENABLED' }}
-            </button>
-          </div>
-
-          <input 
-            type="text"
-            [placeholder]="placeholder"
-            [disabled]="isDisabled"
-          />
-        </div>
+      <!-- Property Binding Section -->
+      <div class="nav-section">
+        <span class="nav-section-title">Property & Styling</span>
+        <a routerLink="/property-binding" class="nav-link">6. Property Binding</a>
+        <a routerLink="/disable-button" class="nav-link">7. Disable Button</a>
+        <a routerLink="/dynamic-styling" class="nav-link">8. Dynamic Styling</a>
       </div>
-    </section>
-
-    <!-- ===== 4. EVENT BINDING ===== -->
-    <section class="example-section">
-      <h2>4. Event Binding - (event)</h2>
-      <p class="description">Responds to user events like click, input, etc.</p>
       
-      <div class="code-example">
-        <p><strong>Syntax:</strong> <code>(event)="handler()"</code></p>
-
-        <div class="event-demo">
-          <button (click)="handleClick()" class="primary-button">
-            Click Me!
-          </button>
-          
-          <div class="output-box">
-            <p><strong>Button Clicked:</strong> {{ clickCount }} times</p>
-          </div>
-
-          <div class="button-group">
-            <button (click)="toggleLogin()">
-              {{ isLoggedIn ? 'Logout' : 'Login' }}
-            </button>
-            <button (click)="toggleDetails()">
-              {{ showDetails ? 'Hide Details' : 'Show Details' }}
-            </button>
-            <button (click)="clearForm()">Clear Form Data</button>
-          </div>
-        </div>
+      <!-- Event Binding Section -->
+      <div class="nav-section">
+        <span class="nav-section-title">Event Binding</span>
+        <a routerLink="/button-click-event" class="nav-link">9. Button Click Event</a>
+        <a routerLink="/input-event-handling" class="nav-link">10. Input Event Handling</a>
+        <a routerLink="/passing-data-event" class="nav-link">11. Passing Data</a>
       </div>
-    </section>
-
-    <!-- ===== 5. STRUCTURAL DIRECTIVES: *ngIf ===== -->
-    <section class="example-section">
-      <h2>5. Structural Directives - *ngIf</h2>
-      <p class="description">Conditionally adds or removes DOM elements</p>
       
-      <div class="code-example">
-        <p><strong>Syntax:</strong> <code>*ngIf="condition"</code></p>
-
-        <div class="conditional-demo">
-          <p *ngIf="isLoggedIn" class="success-message">
-            ✓ You are logged in! Welcome back!
-          </p>
-          
-          <p *ngIf="!isLoggedIn" class="info-message">
-            Please log in to continue
-          </p>
-
-          <div *ngIf="showDetails" class="detail-box">
-            <h4>Additional Details:</h4>
-            <p>Name: {{ userName || 'Anonymous' }}</p>
-            <p>Email: {{ userEmail || 'No email provided' }}</p>
-            <p>Status: {{ isLoggedIn ? 'Logged In' : 'Logged Out' }}</p>
-            <p>Role: {{ userRole }}</p>
-          </div>
-
-          <!-- ngIf with else -->
-          <div *ngIf="userRole === 'admin'; else notAdmin">
-            <p class="admin-badge">👤 ADMIN ACCESS GRANTED</p>
-          </div>
-          <ng-template #notAdmin>
-            <p class="user-badge">👥 Regular User</p>
-          </ng-template>
-        </div>
+      <!-- Class Binding Section -->
+      <div class="nav-section">
+        <span class="nav-section-title">Class Binding</span>
+        <a routerLink="/conditional-class-binding" class="nav-link">12. Conditional Class</a>
+        <a routerLink="/multiple-class-binding" class="nav-link">13. Multiple Classes</a>
+        <a routerLink="/toggle-class" class="nav-link">14. Toggle Class</a>
       </div>
-    </section>
-
-    <!-- ===== 6. STRUCTURAL DIRECTIVES: *ngFor ===== -->
-    <section class="example-section">
-      <h2>6. Structural Directives - *ngFor</h2>
-      <p class="description">Repeats DOM elements for each item in a list</p>
       
-      <div class="code-example">
-        <p><strong>Syntax:</strong> <code>*ngFor="let item of array"</code></p>
-
-        <div class="loop-demo">
-          <h4>Student List:</h4>
-          <div *ngIf="students.length === 0" class="empty-state">
-            No students found
-          </div>
-
-          <ul class="student-list" *ngIf="students.length > 0">
-            <li *ngFor="let student of students; let index = index" class="student-item">
-              <span class="index">{{ index + 1 }}.</span>
-              <span class="name">{{ student.name }}</span>
-              <span class="score">Score: {{ student.score }}</span>
-              <button (click)="removeStudent(student.id)" class="delete-btn">Delete</button>
-            </li>
-          </ul>
- 
-          <div class="stats-box">
-            <p><strong>Total Students:</strong> {{ students.length }}</p>
-            <p><strong>Total Score:</strong> {{ totalScore }}</p>
-            <p><strong>Average Score:</strong> {{ (totalScore / students.length) | number:'1.2-2' }}</p>
-          </div>
-        </div>
+      <!-- Combined Section -->
+      <div class="nav-section">
+        <span class="nav-section-title">Mixed Concept</span>
+        <a routerLink="/combined-binding" class="nav-link">15. Combined Binding</a>
       </div>
-    </section>
+    </div>
+  </div>
+</nav>
 
-    <!-- ===== 7. CLASS BINDING ===== -->
-    <section class="example-section">
-      <h2>7. Class Binding - [class] & [ngClass]</h2>
-      <p class="description">Dynamically adds or removes CSS classes</p>
-      
-      <div class="code-example">
-        <p><strong>Syntax:</strong> <code>[class.className]="condition"</code> or <code>[ngClass]="object"</code></p>
-
-        <div class="class-demo">
-          <div 
-            class="demo-box"
-            [class.active]="isActive"
-            [class.disabled]="isDisabled"
-          >
-            Box with dynamic classes
-          </div>
-
-          <div class="control-group">
-            <button (click)="isActive = !isActive">
-              Toggle Active: {{ isActive ? 'YES' : 'NO' }}
-            </button>
-          </div>
-
-          <p>Status: 
-            <span class="badge" [class.badge-success]="isActive">
-              {{ isActive ? 'ACTIVE' : 'INACTIVE' }}
-            </span>
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== 8. STYLE BINDING ===== -->
-    <section class="example-section">
-      <h2>8. Style Binding - [style]</h2>
-      <p class="description">Dynamically adds inline styles</p>
-      
-      <div class="code-example">
-        <p><strong>Syntax:</strong> <code>[style.property]="value"</code></p>
-
-        <div class="style-demo">
-          <div 
-            class="styled-box"
-            [style.backgroundColor]="backgroundColor"
-            [style.fontSize]="fontSize"
-          >
-            Dynamic Styled Content
-          </div>
-
-          <div class="control-group">
-            <input 
-              type="color" 
-              [(ngModel)]="backgroundColor" 
-              placeholder="Pick a color"
-            />
-            <input 
-              type="number" 
-              [(ngModel)]="fontSize" 
-              placeholder="Font size"
-              min="12"
-              max="32"
-            />px
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== 9. ADD STUDENT FORM ===== -->
-    <section class="example-section">
-      <h2>9. Practical Example: Add Student Form</h2>
-      <p class="description">Combining everything: Binding, Events, Directives</p>
-      
-      <div class="code-example">
-        <div class="form-container">
-          <h4>Add New Student</h4>
-          
-          <input 
-            type="text" 
-            [(ngModel)]="userName" 
-            placeholder="Student name"
-          />
-          
-          <button (click)="addStudent()" class="primary-button">
-            Add Student
-          </button>
-          <button (click)="clearForm()" class="secondary-button">
-            Clear
-          </button>
-
-          <div class="output-box">
-            <p>Students Count: <strong>{{ students.length }}</strong></p>
-            <p *ngIf="userName">Next student to add: <strong>{{ userName }}</strong></p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="footer">
-    <p>Angular Basics Teaching Guide | Version {{ appVersion }}</p>
-  </footer>
-</div>
-
-<!-- Routing outlet for child routes -->
 <router-outlet></router-outlet>
 

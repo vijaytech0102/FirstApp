@@ -1,6 +1,73 @@
+/* Navigation Bar Styles */
+.navbar {
+  background-color: #002b5c;
+  color: white;
+  padding: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.nav-title {
+  margin: 0 0 20px 0;
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+  border-bottom: 2px solid #0066cc;
+  padding-bottom: 10px;
+}
+
+.nav-menu {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.nav-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nav-section-title {
+  font-weight: bold;
+  color: #0066cc;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.nav-link {
+  display: inline-block;
+  color: #ccc;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: all 0.3s;
+  font-size: 14px;
+}
+
+.nav-link:hover {
+  background-color: #0066cc;
+  color: white;
+  transform: translateX(5px);
+}
+
+router-outlet {
+  display: block;
+  padding: 20px;
+}
+
 /* ============================================
    ANGULAR BASICS - TEACHING GUIDE STYLES
    ============================================ */
+
 
 :root {
   --primary-color: #0066cc;

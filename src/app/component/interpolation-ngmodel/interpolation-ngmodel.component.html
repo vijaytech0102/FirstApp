@@ -1,0 +1,71 @@
+<div class="container">
+  <h2>Combining Interpolation & ngModel</h2>
+  
+  <div class="content">
+    <h3>📊 Mark Based Pass/Fail Checker</h3>
+    
+    <div class="input-section">
+      <label for="marksInput">Enter your marks (0-100):</label>
+      <input 
+        id="marksInput"
+        type="number" 
+        [(ngModel)]="marks" 
+        (input)="updateResult()"
+        min="0"
+        max="100"
+        placeholder="Enter marks"
+      >
+    </div>
+    
+    <div class="marks-display">
+      <p><strong>Marks:</strong> {{ marks !== null ? marks : '(not entered)' }}</p>
+      <p *ngIf="result" [ngClass]="result.includes('Pass') ? 'pass-status' : 'fail-status'">
+        <strong>Result:</strong> {{ result }}
+      </p>
+    </div>
+    
+    <button (click)="resetMarks()" class="btn-reset">Reset</button>
+    
+    <hr>
+    
+    <h3>🎯 Passing Grade Criteria</h3>
+    <div class="criteria-box">
+      <p>✅ <strong>Pass:</strong> Marks ≥ 40</p>
+      <p>❌ <strong>Fail:</strong> Marks &lt; 40</p>
+    </div>
+    
+    <hr>
+    
+    <h3>❓ Can We Use Ternary Operator Inside Interpolation?</h3>
+    <div class="answer-box">
+      <p>✅ <strong>YES!</strong> We can use ternary operator inside interpolation</p>
+      <p class="code-example">
+        {{ condition ? valueIfTrue : valueIfFalse }}
+        <br><br>
+        Example: {{ marks !== null ? (marks >= 40 ? 'Pass' : 'Fail') : 'Not entered' }}
+      </p>
+      <p class="note">This component uses ternary in component method, but we can also write directly in template</p>
+    </div>
+    
+    <hr>
+    
+    <h3>📝 Try Different Scenarios</h3>
+    <div class="scenarios">
+      <div class="scenario-item">
+        <strong>Excellent:</strong> Enter 85 → {{ 85 >= 40 ? 'Pass ✅' : 'Fail ❌' }}
+      </div>
+      <div class="scenario-item">
+        <strong>Good:</strong> Enter 65 → {{ 65 >= 40 ? 'Pass ✅' : 'Fail ❌' }}
+      </div>
+      <div class="scenario-item">
+        <strong>Passing:</strong> Enter 40 → {{ 40 >= 40 ? 'Pass ✅' : 'Fail ❌' }}
+      </div>
+      <div class="scenario-item">
+        <strong>Just Failed:</strong> Enter 39 → {{ 39 >= 40 ? 'Pass ✅' : 'Fail ❌' }}
+      </div>
+      <div class="scenario-item">
+        <strong>Poor:</strong> Enter 20 → {{ 20 >= 40 ? 'Pass ✅' : 'Fail ❌' }}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,163 @@
+<div class="container">
+  <h2>Toggle Class on Click</h2>
+  
+  <div class="content">
+    <h3>⚡ Toggle Class Implementation</h3>
+    
+    <div class="demo">
+      <div 
+        [class.highlight]="isHighlighted"
+        class="toggleable-box"
+      >
+        <p>Click the button below to toggle the 'highlight' class</p>
+        <p class="status-text">
+          Current State: {{ isHighlighted ? 'HIGHLIGHTED ⭐' : 'NORMAL' }}
+        </p>
+      </div>
+      
+      <button (click)="toggleHighlight()" class="btn-toggle">
+        {{ isHighlighted ? '❌ Remove' : '✅ Apply' }} Highlight
+      </button>
+      
+      <div class="stats">
+        <p><strong>Toggle Count:</strong> {{ toggleCount }}</p>
+      </div>
+      
+      <button (click)="resetToggle()" class="btn-reset">Reset</button>
+    </div>
+    
+    <hr>
+    
+    <h3>📝 How to Implement Toggle Logic</h3>
+    
+    <div class="implementation-guide">
+      <h4>Step 1: Define a Boolean Property</h4>
+      <div class="code-box">
+        export class MyComponent {{ '{' }}
+        <br>
+        &nbsp;&nbsp;isHighlighted: boolean = false;
+        <br>
+        {{ '}' }}
+      </div>
+      
+      <h4>Step 2: Create a Toggle Method</h4>
+      <div class="code-box">
+        toggleHighlight(): void {{ '{' }}
+        <br>
+        &nbsp;&nbsp;this.isHighlighted = !this.isHighlighted;
+        <br>
+        {{ '}' }}
+      </div>
+      
+      <h4>Step 3: Bind Class Conditionally</h4>
+      <div class="code-box">
+        &lt;div [class.highlight]="isHighlighted"&gt;
+        <br>
+        &nbsp;&nbsp;Content
+        <br>
+        &lt;/div&gt;
+      </div>
+      
+      <h4>Step 4: Attach Click Event</h4>
+      <div class="code-box">
+        &lt;button (click)="toggleHighlight()"&gt;
+        <br>
+        &nbsp;&nbsp;Toggle
+        <br>
+        &lt;/button&gt;
+      </div>
+      
+      <hr class="inner-hr">
+      
+      <h4>✅ Complete Example</h4>
+      <div class="full-example">
+        <p><strong>Component Class (TypeScript):</strong></p>
+        <div class="code-box">
+          export class ToggleComponent {{ '{' }}
+          <br>
+          &nbsp;&nbsp;isActive: boolean = false;
+          <br>
+          <br>
+          &nbsp;&nbsp;toggleActive(): void {{ '{' }}
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;this.isActive = !this.isActive;
+          <br>
+          &nbsp;&nbsp;{{ '}' }}
+          <br>
+          {{ '}' }}
+        </div>
+        
+        <p><strong>Template (HTML):</strong></p>
+        <div class="code-box">
+          &lt;div [class.active]="isActive"&gt;
+          <br>
+          &nbsp;&nbsp;Curly braces: isActive ? 'Active' : 'Inactive'
+          <br>
+          &lt;/div&gt;
+          <br><br>
+          &lt;button (click)="toggleActive()"&gt;
+          <br>
+          &nbsp;&nbsp;Toggle
+          <br>
+          &lt;/button&gt;
+        </div>
+        
+        <p><strong>Styles (CSS):</strong></p>
+        <div class="code-box">
+          .active {{ '{' }}
+          <br>
+          &nbsp;&nbsp;background-color: #28a745;
+          <br>
+          &nbsp;&nbsp;color: white;
+          <br>
+          &nbsp;&nbsp;padding: 20px;
+          <br>
+          {{ '}' }}
+        </div>
+      </div>
+      
+      <hr class="inner-hr">
+      
+      <h4>🔄 Other Toggle Patterns</h4>
+      
+      <div class="patterns">
+        <div class="pattern">
+          <h5>Pattern 1: Simple Boolean Toggle</h5>
+          <div class="code-box">
+            toggle(): void {{ '{' }}
+            <br>
+            &nbsp;&nbsp;this.isVisible = !this.isVisible;
+            <br>
+            {{ '}' }}
+          </div>
+        </div>
+        
+        <div class="pattern">
+          <h5>Pattern 2: Toggle with Logging</h5>
+          <div class="code-box">
+            toggle(): void {{ '{' }}
+            <br>
+            &nbsp;&nbsp;this.isVisible = !this.isVisible;
+            <br>
+            &nbsp;&nbsp;console.log('Toggled:', this.isVisible);
+            <br>
+            {{ '}' }}
+          </div>
+        </div>
+        
+        <div class="pattern">
+          <h5>Pattern 3: Toggle with Callback</h5>
+          <div class="code-box">
+            toggle(callback?: () => void): void {{ '{' }}
+            <br>
+            &nbsp;&nbsp;this.isVisible = !this.isVisible;
+            <br>
+            &nbsp;&nbsp;callback?.();
+            <br>
+            {{ '}' }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

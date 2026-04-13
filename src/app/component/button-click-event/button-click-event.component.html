@@ -1,0 +1,117 @@
+<div class="container">
+  <h2>Button Click Event - Event Binding</h2>
+  
+  <div class="content">
+    <h3>🔘 Button Click Event Handler</h3>
+    
+    <div class="button-section">
+      <button (click)="onButtonClick()" class="btn-click">
+        Click Me!
+      </button>
+      <button (click)="resetCounter()" class="btn-reset">Reset</button>
+    </div>
+    
+    <div class="stats">
+      <div class="stat-item">
+        <span class="stat-label">Total Clicks:</span>
+        <span class="stat-value">{{ clickCount }}</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Last Click:</span>
+        <span class="stat-value">{{ lastClickTime }}</span>
+      </div>
+    </div>
+    
+    <hr>
+    
+    <h3>📋 Event Log (Last 5 Clicks)</h3>
+    
+    <div class="event-log">
+      <div *ngIf="eventLog.length === 0" class="no-events">
+        No clicks yet. Start clicking the button! 👆
+      </div>
+      <div *ngFor="let event of eventLog" class="log-entry">
+        {{ event }}
+      </div>
+    </div>
+    
+    <button (click)="clearLog()" class="btn-clear" *ngIf="eventLog.length > 0">
+      Clear Log
+    </button>
+    
+    <hr>
+    
+    <h3>📝 How Angular Handles DOM Events</h3>
+    
+    <div class="info-box">
+      <h4>Event Binding Syntax: (event)="handler()"</h4>
+      
+      <div class="process">
+        <div class="step">
+          <strong>1. Event Registration</strong>
+          <p>Angular registers the event listener on the DOM element</p>
+        </div>
+        
+        <div class="step">
+          <strong>2. Event Occurrence</strong>
+          <p>User interacts (click, input, etc.), browser triggers the event</p>
+        </div>
+        
+        <div class="step">
+          <strong>3. Zone.js (Change Detection)</strong>
+          <p>Zone.js intercepts the event and notifies Angular's change detection</p>
+        </div>
+        
+        <div class="step">
+          <strong>4. Handler Execution</strong>
+          <p>Angular calls the method/handler from component class</p>
+        </div>
+        
+        <div class="step">
+          <strong>5. Change Detection</strong>
+          <p>Angular runs change detection, updates bindings and DOM</p>
+        </div>
+      </div>
+      
+      <hr class="inner-hr">
+      
+      <h4>Common DOM Events</h4>
+      <div class="events-table">
+        <div class="event-row">
+          <span class="event-name">(click)</span>
+          <span class="event-desc">Mouse click or Enter key on button</span>
+        </div>
+        <div class="event-row">
+          <span class="event-name">(input)</span>
+          <span class="event-desc">Text input change</span>
+        </div>
+        <div class="event-row">
+          <span class="event-name">(change)</span>
+          <span class="event-desc">Element loses focus after change</span>
+        </div>
+        <div class="event-row">
+          <span class="event-name">(submit)</span>
+          <span class="event-desc">Form submission</span>
+        </div>
+        <div class="event-row">
+          <span class="event-name">(keyup)</span>
+          <span class="event-desc">Key released</span>
+        </div>
+        <div class="event-row">
+          <span class="event-name">(keydown)</span>
+          <span class="event-desc">Key pressed</span>
+        </div>
+        <div class="event-row">
+          <span class="event-name">(mouseover)</span>
+          <span class="event-desc">Mouse moves over element</span>
+        </div>
+      </div>
+    </div>
+    
+    <hr>
+    
+    <div class="console-tip">
+      <strong>💡 Tip:</strong> Open the browser console (F12) to see console.log output when you click the button!
+    </div>
+  </div>
+</div>

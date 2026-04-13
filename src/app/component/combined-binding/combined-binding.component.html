@@ -1,0 +1,217 @@
+<div class="container">
+  <h2>Combine Property + Event + Class Binding</h2>
+  
+  <div class="content">
+    <h3>🔗 Mixed Concept - Complex Example</h3>
+    
+    <div class="demo-section">
+      <h4>Interactive Activate/Deactivate Component</h4>
+      
+      <div class="box-container">
+        <!-- Box with combined bindings -->
+        <div 
+          [class.active]="isActive"
+          [class.inactive]="!isActive"
+          class="status-box"
+        >
+          <div class="status-indicator" [class.indicator-active]="isActive"></div>
+          
+          <div class="box-content">
+            <h3>{{ isActive ? 'ACTIVE ✅' : 'INACTIVE ❌' }}</h3>
+            <p>Click the button to toggle the activation state</p>
+          </div>
+        </div>
+        
+        <!-- Button with dynamic text and state -->
+        <button 
+          (click)="toggleActive()"
+          [disabled]="false"
+          class="btn-activate"
+          [class.btn-deactivate]="isActive"
+        >
+          {{ isActive ? 'Deactivate' : 'Activate' }} Component
+        </button>
+      </div>
+      
+      <!-- Statistics section -->
+      <div class="stats-section">
+        <div class="stat-item">
+          <span class="stat-label">Current Status</span>
+          <span class="stat-value" [class.stat-active]="isActive">
+            {{ isActive ? 'ACTIVE' : 'INACTIVE' }}
+          </span>
+        </div>
+        
+        <div class="stat-item">
+          <span class="stat-label">Total Toggles</span>
+          <span class="stat-value">{{ clickCount }}</span>
+        </div>
+      </div>
+      
+      <button (click)="reset()" class="btn-reset">Reset All</button>
+    </div>
+    
+    <hr>
+    
+    <h3>📊 Which Type of Binding is Used in Each Case?</h3>
+    
+    <div class="analysis">
+      <div class="binding-type">
+        <h4>1️⃣ Button Text: "Activate" vs "Deactivate"</h4>
+        <div class="binding-info">
+          <p><strong>Type:</strong> Interpolation</p>
+          <p><strong>Code:</strong> {{ '{{ isActive ? "Deactivate" : "Activate" }} Component' }}</p>
+          <p><strong>Purpose:</strong> Display dynamic text based on component state</p>
+        </div>
+      </div>
+      
+      <div class="binding-type">
+        <h4>2️⃣ Div Gets Class "active": [class.active]</h4>
+        <div class="binding-info">
+          <p><strong>Type:</strong> Class Binding [ ]</p>
+          <p><strong>Code:</strong> [class.active]="isActive"</p>
+          <p><strong>Purpose:</strong> Conditionally apply CSS class for styling</p>
+        </div>
+      </div>
+      
+      <div class="binding-type">
+        <h4>3️⃣ Button Click Handler: (click)="toggleActive()"</h4>
+        <div class="binding-info">
+          <p><strong>Type:</strong> Event Binding ( )</p>
+          <p><strong>Code:</strong> (click)="toggleActive()"</p>
+          <p><strong>Purpose:</strong> Listen to user click and call method</p>
+        </div>
+      </div>
+      
+      <div class="binding-type">
+        <h4>4️⃣ Button Class Changes: [class.btn-deactivate]</h4>
+        <div class="binding-info">
+          <p><strong>Type:</strong> Class Binding [ ]</p>
+          <p><strong>Code:</strong> [class.btn-deactivate]="isActive"</p>
+          <p><strong>Purpose:</strong> Change button styling based on state</p>
+        </div>
+      </div>
+      
+      <div class="binding-type">
+        <h4>5️⃣ Display Statistics: {{ clickCount }}</h4>
+        <div class="binding-info">
+          <p><strong>Type:</strong> Interpolation</p>
+          <p><strong>Code:</strong> {{ '{{ clickCount }}' }}</p>
+          <p><strong>Purpose:</strong> Display reactive data from component</p>
+        </div>
+      </div>
+    </div>
+    
+    <hr>
+    
+    <h3>🎯 Complete Code Structure</h3>
+    
+    <div class="code-structure">
+      <h4>Component Class (TypeScript)</h4>
+      <div class="code-box">
+        export class CombinedBindingComponent {{ '{' }}
+          <br>
+          &nbsp;&nbsp;isActive: boolean = false;
+          <br>
+          &nbsp;&nbsp;clickCount: number = 0;
+          <br>
+          <br>
+          &nbsp;&nbsp;toggleActive(): void {{ '{' }}
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;this.isActive = !this.isActive;
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;this.clickCount++;
+          <br>
+          &nbsp;&nbsp;{{ '}' }}
+          <br>
+          {{ '}' }}
+      </div>
+      
+      <h4>Template (HTML)</h4>
+      <div class="code-box">
+        &lt;div [class.active]="isActive"&gt;
+        <br>
+        &nbsp;&nbsp;&lt;h3&gt;{{ isActive ? 'ACTIVE' : 'INACTIVE' }}&lt;/h3&gt;
+        <br>
+        &lt;/div&gt;
+        <br><br>
+        &lt;button 
+        <br>
+        &nbsp;&nbsp;(click)="toggleActive()"
+        <br>
+        &nbsp;&nbsp;[class.btn-active]="isActive"&gt;
+        <br>
+        &nbsp;&nbsp;{{ isActive ? 'Deactivate' : 'Activate' }}
+        <br>
+        &lt;/button&gt;
+        <br><br>
+        &lt;p&gt;Clicks: {{ clickCount }}&lt;/p&gt;
+      </div>
+      
+      <h4>Styles (CSS)</h4>
+      <div class="code-box">
+        .active {{ '{' }}
+        <br>
+        &nbsp;&nbsp;background-color: #28a745;
+        <br>
+        &nbsp;&nbsp;color: white;
+        <br>
+        {{ '}' }}
+        <br><br>
+        .btn-active {{ '{' }}
+        <br>
+        &nbsp;&nbsp;background-color: #dc3545;
+        <br>
+        {{ '}' }}
+      </div>
+    </div>
+    
+    <hr>
+    
+    <div class="summary-box">
+      <h3>📋 Summary Table</h3>
+      <table class="summary-table">
+        <thead>
+          <tr>
+            <th>Binding Type</th>
+            <th>Syntax</th>
+            <th>Purpose</th>
+            <th>Direction</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Interpolation</strong></td>
+            <td>{{ '{{ expression }}' }}</td>
+            <td>Display dynamic text/values</td>
+            <td>One-way (Component → Template)</td>
+          </tr>
+          <tr>
+            <td><strong>Property Binding</strong></td>
+            <td>[property]="value"</td>
+            <td>Bind to DOM properties</td>
+            <td>One-way (Component → Template)</td>
+          </tr>
+          <tr>
+            <td><strong>Event Binding</strong></td>
+            <td>(event)="handler()"</td>
+            <td>Listen to DOM events</td>
+            <td>One-way (Template → Component)</td>
+          </tr>
+          <tr>
+            <td><strong>Class Binding</strong></td>
+            <td>[class.name]="condition"</td>
+            <td>Apply classes conditionally</td>
+            <td>One-way (Component → Template)</td>
+          </tr>
+          <tr>
+            <td><strong>Two-Way Binding</strong></td>
+            <td>[(ngModel)]="property"</td>
+            <td>Sync between component and form</td>
+            <td>Two-way (Bidirectional)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

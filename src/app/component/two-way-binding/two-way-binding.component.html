@@ -1,0 +1,52 @@
+<div class="container">
+  <h2>Two-Way Data Binding using ngModel</h2>
+  
+  <div class="content">
+    <h3>✔️ Real-Time Binding Example</h3>
+    
+    <div class="input-section">
+      <label for="nameInput">Enter your name:</label>
+      <input 
+        id="nameInput"
+        type="text" 
+        [(ngModel)]="userName" 
+        placeholder="Type your name here"
+        (input)="updateGreeting()"
+      >
+    </div>
+    
+    <div class="display-section">
+      <p><strong>Your Name:</strong> {{ userName || '(empty)' }}</p>
+      <p><strong>Character Count:</strong> {{ userName.length }}</p>
+      <p *ngIf="userName" class="greeting">{{ userGreeting }}</p>
+    </div>
+    
+    <button (click)="resetName()" class="btn-reset">Reset</button>
+    
+    <hr>
+    
+    <h3>How ngModel Works?</h3>
+    <div class="info-box">
+      <p><strong>Syntax:</strong> <code>[(ngModel)]="propertyName"</code></p>
+      <p class="note">✓ Combines property binding [ngModel] and event binding (ngModelChange)</p>
+      <p class="note">✓ Creates two-way synchronization between input field and component property</p>
+      <p class="note">✓ Changes in input → updates component property</p>
+      <p class="note">✓ Changes in property → updates input field</p>
+    </div>
+    
+    <hr>
+    
+    <h3>❓ Which Module Must Be Imported?</h3>
+    <div class="answer-box">
+      <p>✅ <strong>FormsModule</strong> must be imported to use ngModel</p>
+      <p class="code-example">
+        import {{ '{' }} FormsModule {{ '}' }} from '&#64;angular/forms';
+        <br>
+        <br>
+        // In component standalone or NgModule:
+        <br>
+        imports: {{ '[' }}FormsModule{{ ']' }}
+      </p>
+    </div>
+  </div>
+</div>

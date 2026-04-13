@@ -1,0 +1,147 @@
+<div class="container">
+  <h2>Conditional Class Binding</h2>
+  
+  <div class="content">
+    <h3>🎨 Apply CSS Class Dynamically</h3>
+    
+    <div class="demo-section">
+      <div 
+        [class.active]="isActive"
+        class="box"
+      >
+        <p>This box is {{ isActive ? 'ACTIVE' : 'INACTIVE' }}</p>
+        <p class="toggle-hint">Click the button below to toggle the 'active' class</p>
+      </div>
+      
+      <button (click)="toggleActive()" class="btn-toggle">
+        {{ isActive ? 'Remove' : 'Apply' }} Active Class
+      </button>
+    </div>
+    
+    <hr>
+    
+    <h3>🎯 Status-Based Classes</h3>
+    
+    <div class="status-demo">
+      <div [class.status-success]="status === 'success'" 
+           [class.status-warning]="status === 'warning'"
+           [class.status-error]="status === 'error'"
+           [class.status-info]="status === 'info'"
+           class="status-box">
+        <p><strong>Current Status:</strong> {{ status.toUpperCase() }}</p>
+        <p class="status-message">
+          <span *ngIf="status === 'success'">✅ Operation completed successfully!</span>
+          <span *ngIf="status === 'warning'">⚠️ Please take caution with this action</span>
+          <span *ngIf="status === 'error'">❌ An error occurred. Please try again!</span>
+          <span *ngIf="status === 'info'">ℹ️ This is informational message</span>
+        </p>
+      </div>
+      
+      <div class="status-buttons">
+        <button (click)="setStatus('success')" class="btn-success">Success</button>
+        <button (click)="setStatus('warning')" class="btn-warning">Warning</button>
+        <button (click)="setStatus('error')" class="btn-error">Error</button>
+        <button (click)="setStatus('info')" class="btn-info">Info</button>
+      </div>
+    </div>
+    
+    <hr>
+    
+    <h3>❓ Difference Between [class.active] and [ngClass]</h3>
+    
+    <div class="comparison-box">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Aspect</th>
+            <th>[class.className]</th>
+            <th>[ngClass]</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Syntax</strong></td>
+            <td>[class.active]="condition"</td>
+            <td>[ngClass]="{{ '{' }} active: condition {{ '}' }}"</td>
+          </tr>
+          <tr>
+            <td><strong>Single Class</strong></td>
+            <td>✅ Simple & Clean</td>
+            <td>⚠️ More verbose</td>
+          </tr>
+          <tr>
+            <td><strong>Multiple Classes</strong></td>
+            <td>⚠️ Multiple bindings</td>
+            <td>✅ Single binding</td>
+          </tr>
+          <tr>
+            <td><strong>Array Support</strong></td>
+            <td>❌ No</td>
+            <td>✅ Yes</td>
+          </tr>
+          <tr>
+            <td><strong>Performance</strong></td>
+            <td>✅ Slightly better for single class</td>
+            <td>Comparable for multiple</td>
+          </tr>
+          <tr>
+            <td><strong>Readability</strong></td>
+            <td>✅ Clear for single class</td>
+            <td>✅ Clear for multiple classes</td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <div class="code-examples">
+        <h4>Single Class Example</h4>
+        <p><strong>Using [class.active]:</strong></p>
+        <div class="code-box">
+          &lt;div [class.active]="isActive"&gt;Active Box&lt;/div&gt;
+        </div>
+        
+        <p><strong>Using [ngClass]:</strong></p>
+        <div class="code-box">
+          &lt;div [ngClass]="{{ '{' }} active: isActive {{ '}' }}"&gt;Active Box&lt;/div&gt;
+        </div>
+        
+        <h4>Multiple Classes (Best Practices)</h4>
+        <p><strong>[class.active] - Multiple bindings:</strong></p>
+        <div class="code-box">
+          &lt;div [class.active]="isActive"
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.highlight]="isHighlighted"
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.disabled]="isDisabled"&gt;
+          <br>
+          &lt;/div&gt;
+        </div>
+        
+        <p><strong>[ngClass] - Much cleaner:</strong></p>
+        <div class="code-box">
+          &lt;div [ngClass]="{{ '{' }} 
+          <br>
+          &nbsp;&nbsp;active: isActive,
+          <br>
+          &nbsp;&nbsp;highlight: isHighlighted,
+          <br>
+          &nbsp;&nbsp;disabled: isDisabled
+          <br>
+          {{ '}' }}"&gt;
+          <br>
+          &lt;/div&gt;
+        </div>
+      </div>
+    </div>
+    
+    <hr>
+    
+    <div class="recommendation-box">
+      <strong>📌 Recommendation:</strong>
+      <ul>
+        <li>✅ Use <code>[class.className]</code> for <strong>single conditional class</strong></li>
+        <li>✅ Use <code>[ngClass]</code> for <strong>multiple conditional classes</strong></li>
+        <li>✅ Use <code>[class]="className"</code> for <strong>dynamic class names from variables</strong></li>
+      </ul>
+    </div>
+  </div>
+</div>
